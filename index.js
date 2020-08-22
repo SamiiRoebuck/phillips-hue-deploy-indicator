@@ -13,3 +13,45 @@ try {
 } catch (error) {
   core.setFailed(error.message);
 }
+
+try {
+    const bridge = core.getInput('bridge-ip');
+    const user = core.getInput('user');
+    const light = core.getInput('light');
+    const status = core.getInput('status');
+
+    const url = `https://${bridge}/api/${user}/${light}`;
+
+    const data = { 'on': status };
+
+    fetch(url, {
+        method: 'put',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(
+        function(response) {
+          if (response.status !== 200) {
+            let status = 'Looks like there was a problem. Status Code: ' +
+              response.status;
+              core.setOutput("response", status);
+            return;
+          }
+    
+          response.json().then(function(data) {
+            let status = data;
+            core.setOutput("response", status);
+          });
+        }
+      )
+      .catch(function(err) {
+        console.log('Fetch Error :-S', JSON.stringify(err, ["message", "arguments", "type", "name"]));
+      });
+
+
+
+  } catch (error) {
+    core.setFailed(error.message);
+  }

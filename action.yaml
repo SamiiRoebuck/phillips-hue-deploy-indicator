@@ -1,13 +1,25 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Testing'
+description: 'Testing'
 inputs:
-  who-to-greet: # id of input
-    description: 'Who to greet'
+  bridge-ip: # id of input
+    description: 'IP of your bridge'
     required: true
-    default: 'World'
+    default: ''
+  user: # id of input
+    description: 'Your user for accessing the hue items on your network'
+    required: true
+    default: ''
+  light: # id of input
+    description: 'the extension for the light you want to change'
+    required: true
+    default: ''
+  status: # id of input
+    description: 'true or false'
+    required: true
+    default: ''
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  response: # id of output
+    description: 'The request response'
 runs:
   using: 'node12'
   main: 'index.js'
