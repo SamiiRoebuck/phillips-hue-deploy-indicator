@@ -19,6 +19,7 @@
   "homepage": "https://github.com/SamiiRoebuck/phillips-hue-deploy-indicator#readme",
   "dependencies": {
     "@actions/core": "^1.2.4",
-    "@actions/github": "^4.0.0"
+    "@actions/github": "^4.0.0",
+    "node-fetch": "^2.6.0"
   }
 }
